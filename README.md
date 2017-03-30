@@ -57,11 +57,16 @@ Usage:
     pyannote-change-detection --version
 ...
 ```
+Example of config file can be found in `change_detection/config/`. Before doing the training and evaluation, you can clone this project to local directory. 
+
+```bash
+git clone https://github.com/yinruiqing/change_detection.git
+```
 
 ### Training 
 
 ```bash
-$ pyannote-change-detection train --database your/path/db.yml --subset train your/path/experiment/ Etape.SpeakerDiarization.TV
+$ pyannote-change-detection train --database change_detection/config/db.yml --subset train change_detection/config Etape.SpeakerDiarization.TV
 ```
 This is the expected output:
 
@@ -86,7 +91,7 @@ Epoch 100/100
 ```
 ### Evaluation
 ```bash
-$ pyannote-change-detection evaluate --database your/path/db.yml --subset development your/path/train/ Etape.SpeakerDiarization.TV 
+$ pyannote-change-detection evaluate --database change_detection/config/db.yml --subset development change_detection/config/train/Etape.SpeakerDiarization.TV Etape.SpeakerDiarization.TV 
 ```
 This is the expected output:
 
@@ -102,6 +107,6 @@ This is the expected output:
 1         86.929% 92.672%
 
 ```
-
+The first column is threshold, the second column is purity and the third column is coverage. 
 
 
