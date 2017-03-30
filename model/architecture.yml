@@ -1,0 +1,102 @@
+class_name: Model
+config:
+  input_layers:
+  - [labeling_input, 0, 0]
+  layers:
+  - class_name: InputLayer
+    config:
+      batch_input_shape: !!python/tuple [null, 320, 35]
+      input_dtype: float32
+      name: labeling_input
+      sparse: false
+    inbound_nodes: []
+    name: labeling_input
+  - class_name: Bidirectional
+    config:
+      layer:
+        class_name: LSTM
+        config:
+          U_regularizer: null
+          W_regularizer: null
+          activation: tanh
+          b_regularizer: null
+          batch_input_shape: !!python/tuple [null, 320, 35]
+          consume_less: cpu
+          dropout_U: 0.0
+          dropout_W: 0.0
+          forget_bias_init: one
+          go_backwards: false
+          init: glorot_uniform
+          inner_activation: hard_sigmoid
+          inner_init: orthogonal
+          input_dim: 35
+          input_dtype: float32
+          input_length: null
+          name: forward_lstm_0
+          output_dim: 32
+          return_sequences: true
+          stateful: false
+          trainable: true
+          unroll: false
+      merge_mode: concat
+      name: bidirectional_1
+      trainable: true
+    inbound_nodes:
+    - - [labeling_input, 0, 0]
+    name: bidirectional_1
+  - class_name: Bidirectional
+    config:
+      layer:
+        class_name: LSTM
+        config: {U_regularizer: null, W_regularizer: null, activation: tanh, b_regularizer: null,
+          consume_less: cpu, dropout_U: 0.0, dropout_W: 0.0, forget_bias_init: one,
+          go_backwards: false, init: glorot_uniform, inner_activation: hard_sigmoid,
+          inner_init: orthogonal, input_dim: 64, input_length: null, name: forward_lstm_1,
+          output_dim: 20, return_sequences: true, stateful: false, trainable: true,
+          unroll: false}
+      merge_mode: concat
+      name: bidirectional_2
+      trainable: true
+    inbound_nodes:
+    - - [bidirectional_1, 0, 0]
+    name: bidirectional_2
+  - class_name: TimeDistributed
+    config:
+      layer:
+        class_name: Dense
+        config: {W_constraint: null, W_regularizer: null, activation: tanh, activity_regularizer: null,
+          b_constraint: null, b_regularizer: null, bias: true, init: glorot_uniform,
+          input_dim: 40, name: mlp_0, output_dim: 40, trainable: true}
+      name: timedistributed_1
+      trainable: true
+    inbound_nodes:
+    - - [bidirectional_2, 0, 0]
+    name: timedistributed_1
+  - class_name: TimeDistributed
+    config:
+      layer:
+        class_name: Dense
+        config: {W_constraint: null, W_regularizer: null, activation: tanh, activity_regularizer: null,
+          b_constraint: null, b_regularizer: null, bias: true, init: glorot_uniform,
+          input_dim: 40, name: mlp_1, output_dim: 10, trainable: true}
+      name: timedistributed_2
+      trainable: true
+    inbound_nodes:
+    - - [timedistributed_1, 0, 0]
+    name: timedistributed_2
+  - class_name: TimeDistributed
+    config:
+      layer:
+        class_name: Dense
+        config: {W_constraint: null, W_regularizer: null, activation: sigmoid, activity_regularizer: null,
+          b_constraint: null, b_regularizer: null, bias: true, init: glorot_uniform,
+          input_dim: 10, name: labeling_output, output_dim: 1, trainable: true}
+      name: timedistributed_3
+      trainable: true
+    inbound_nodes:
+    - - [timedistributed_2, 0, 0]
+    name: timedistributed_3
+  name: model_1
+  output_layers:
+  - [timedistributed_3, 0, 0]
+keras_version: 1.2.0
