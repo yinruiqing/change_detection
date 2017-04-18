@@ -1,5 +1,17 @@
 # Speaker Change Detection using Bi-LSTM
 Code for [**Speaker Change Detection in Broadcast TV using Bidirectional Long Short-Term Memory Networks**](https://ocsync.limsi.fr/index.php/s/ZAsqipfZgoZZ8E0)
+
+## Citation
+
+```
+@techreport{Yin2017,
+  author = {Ruiqing Yin and Herv\'e Bredin and Claude Barras},
+  title = {{Speaker Change Detection in Broadcast TV using Bidirectional Long Short-Term Memory Networks}},
+  howpublished = {{Submitted to Interspeech 2017}},
+  url = {https://github.com/yinruiqing/change_detection},
+}
+```
+
 ## Installation
 
 **Foreword:** The code is based on [`pyannote`](https://github.com/pyannote). You can also find a similar `Readme` file for [`TristouNet `](https://github.com/hbredin/TristouNet).
