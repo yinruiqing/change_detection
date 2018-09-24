@@ -6,11 +6,12 @@ Code for [**Speaker Change Detection in Broadcast TV using Bidirectional Long Sh
 ```
 @inproceedings{Yin2017,
   Author = {Ruiqing Yin and Herv\'e Bredin and Claude Barras},
-  Title = {{Interspeech 2017, 18th Annual Conference of the International Speech Communication Association}},
+  Title = {{Speaker Change Detection in Broadcast TV using Bidirectional Long Short-Term Memory Networks}},
+  Booktitle = {{18th Annual Conference of the International Speech Communication Association, Interspeech 2017}},
   Year = {2017},
   Month = {August},
   Address = {Stockholm, Sweden},
-  url = {https://github.com/yinruiqing/change_detection},
+  Url = {https://github.com/yinruiqing/change_detection}
 }
 ```
 
