@@ -1,3 +1,5 @@
+:warning: This repository is no longer maintained: it has been integrated into [`pyannote.audio`](https://github.com/pyannote/pyannote-audio).
+
 # Speaker Change Detection using Bi-LSTM
 Code for [**Speaker Change Detection in Broadcast TV using Bidirectional Long Short-Term Memory Networks**](https://github.com/yinruiqing/change_detection/blob/master/doc/change-detection.pdf)
 
